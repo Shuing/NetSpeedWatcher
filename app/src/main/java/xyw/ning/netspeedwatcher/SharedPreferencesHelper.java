@@ -17,6 +17,7 @@ public class SharedPreferencesHelper {
     public final static String KEY_COLOR_DOWN = "key_color_down";
     public final static String KEY_COLOR_UP = "key_color_up";
     public final static String KEY_TEXTSIZE = "key_textsize";
+    public final static String KEY_POSITION = "key_position";
 
     private static SharedPreferences mSharedPreferences = null;
 

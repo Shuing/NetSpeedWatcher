@@ -2,6 +2,8 @@ package xyw.ning.netspeedwatcher;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+import android.net.TrafficStats;
 
 /**
  * Created by ning on 15-4-24.
