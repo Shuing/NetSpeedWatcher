@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_down"
+        android:layout_width="wrap_content"
+        android:textColor="@android:color/holo_green_light"
+        android:text="100"
+        android:layout_marginRight="1dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_up"
+        android:text="100"
+        android:layout_marginLeft="1dp"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
