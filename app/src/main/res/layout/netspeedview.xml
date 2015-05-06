@@ -8,7 +8,7 @@
         android:id="@+id/tv_down"
         android:layout_marginRight="1dp"
         android:layout_width="wrap_content"
-        android:textColor="#99CC00"
+        android:textColor="#1d953f"
         android:layout_height="wrap_content"/>
 
     <TextView

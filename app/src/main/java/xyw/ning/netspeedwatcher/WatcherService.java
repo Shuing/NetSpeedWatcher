@@ -43,7 +43,6 @@ public class WatcherService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Notification notification = new Notification(R.drawable.icon,
                 getString(R.string.app_name), System.currentTimeMillis());
-
         PendingIntent pendingintent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MainActivity.class), 0);
         notification.setLatestEventInfo(this, "网速监控", "保持应用在后台运行",
@@ -83,6 +82,7 @@ public class WatcherService extends Service {
         // 设置悬浮窗的长和宽
         params.width = WindowManager.LayoutParams.WRAP_CONTENT;
         params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        // 设置悬浮窗的位置
         String positions = SharedPreferencesHelper.getSharedPreferences().getString(SharedPreferencesHelper.KEY_POSITION, "0x0");
         String[] strs = positions.split("x");
         int x = Integer.valueOf(strs[0]);
@@ -156,33 +156,32 @@ public class WatcherService extends Service {
         }
 
         private String getDownSpeed() {
-            String str;
             curDownBytes = TrafficStats.getTotalRxBytes();
             float downBytes = curDownBytes - lastDownBytes;
-            str = getBytesAsString(downBytes);
-            return str;
+            return getBytesAsString(downBytes);
         }
 
         private String getUpSpeed() {
-            String str;
             curUpBytes = TrafficStats.getTotalTxBytes();
             float upBytes = curUpBytes - lastUpBytes;
-            str = getBytesAsString(upBytes);
-            return str;
+            return getBytesAsString(upBytes);
         }
 
         private String getBytesAsString(float f) {
-            String str;
             if (f > EXT_M) {
-                str = setScale(f / EXT_M) + "M";
+                return setScale(f / EXT_M) + "M";
             } else if (f > EXT_K) {
-                str = setScale(f / EXT_K) + "K";
+                return setScale(f / EXT_K) + "K";
+            } else if (0 == f) {
+                return "-";
             } else {
-                str = setScale(f) + "B";
+                return setScale(f) + "B";
             }
-            return str;
         }
 
+        /**
+         * 精确到小数点后两位
+         */
         private float setScale(float f) {
             return new BigDecimal(f).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
         }

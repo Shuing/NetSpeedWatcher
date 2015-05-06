@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NetSpeedWatcher</string>
+    <string name="pref_startservice">Start service</string>
+    <string name="pref_color_down">Down color</string>
+    <string name="pref_color_down_defaultvalue">#99CC00</string>
+    <string name="pref_color_up">up color</string>
+    <string name="pref_dialog_title_color">select color</string>
 </resources>
