@@ -5,4 +5,6 @@
     <string name="pref_color_down_defaultvalue">#99CC00</string>
     <string name="pref_color_up">up color</string>
     <string name="pref_dialog_title_color">select color</string>
+    <string name="notification_title">网速监控</string>
+    <string name="notification_content">保持应用在后台运行</string>
 </resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_title">网速监控</string>
+    <string name="notification_content">保持应用在后台运行</string>
+</resources>

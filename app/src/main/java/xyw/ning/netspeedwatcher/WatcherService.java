@@ -36,7 +36,7 @@ public class WatcherService extends Service {
     public void onCreate() {
         super.onCreate();
         createFloatView();
-        new UpdateTask().execute(new Void[]{});
+        new UpdateTask().execute();
     }
 
     @Override
@@ -45,7 +45,7 @@ public class WatcherService extends Service {
                 getString(R.string.app_name), System.currentTimeMillis());
         PendingIntent pendingintent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MainActivity.class), 0);
-        notification.setLatestEventInfo(this, "网速监控", "保持应用在后台运行",
+        notification.setLatestEventInfo(this, getString(R.string.notification_title), getString(R.string.notification_content),
                 pendingintent);
         startForeground(0x111, notification);
         return super.onStartCommand(intent, START_STICKY, startId);
@@ -143,7 +143,7 @@ public class WatcherService extends Service {
                 lastUpBytes = curUpBytes;
                 try {
                     Thread.sleep(1000);
-                } catch (InterruptedException e) {
+                } catch (InterruptedException ignored) {
                 }
             }
             return null;
@@ -173,7 +173,7 @@ public class WatcherService extends Service {
             } else if (f > EXT_K) {
                 return setScale(f / EXT_K) + "K";
             } else if (0 == f) {
-                return "-";
+                return "";
             } else {
                 return setScale(f) + "B";
             }
