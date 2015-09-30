@@ -10,8 +10,7 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (TrafficStats.getTotalRxBytes() == TrafficStats.UNSUPPORTED) {
-        } else {
+        if (TrafficStats.getTotalRxBytes() != TrafficStats.UNSUPPORTED) {
             startService(new Intent(this, WatcherService.class));
         }
         finish();

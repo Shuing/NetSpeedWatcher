@@ -24,8 +24,8 @@ public class WatcherService extends Service {
     private static WindowManager wm;
     private static WindowManager.LayoutParams params;
     private View view;
-    private TextView downTV;
-    private TextView upTV;
+    private TextView downView;
+    private TextView upView;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -63,8 +63,8 @@ public class WatcherService extends Service {
      */
     private void createFloatView() {
         view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.netspeedview, null);
-        downTV = (TextView) view.findViewById(R.id.tv_down);
-        upTV = (TextView) view.findViewById(R.id.tv_up);
+        downView = (TextView) view.findViewById(R.id.tv_down);
+        upView = (TextView) view.findViewById(R.id.tv_up);
         wm = (WindowManager) getApplicationContext().getSystemService(
                 Context.WINDOW_SERVICE);
         params = new WindowManager.LayoutParams();
@@ -151,8 +151,8 @@ public class WatcherService extends Service {
 
         @Override
         protected void onProgressUpdate(String[] values) {
-            downTV.setText(values[0]);
-            upTV.setText(values[1]);
+            downView.setText(values[0]);
+            upView.setText(values[1]);
         }
 
         private String getDownSpeed() {
