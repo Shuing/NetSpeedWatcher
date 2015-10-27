@@ -69,11 +69,13 @@ public class WatcherService extends Service {
                 Context.WINDOW_SERVICE);
         params = new WindowManager.LayoutParams();
         // 设置window type
-        params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        params.type = WindowManager.LayoutParams.TYPE_SYSTEM_ERROR;
         params.format = PixelFormat.RGBA_8888; // 设置图片格式，效果为背景透明
-        // 设置Window flag
-        params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        // 设置Window flag,可以显示在状态栏上
+        params.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL |
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR |
+                WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
+
         /*
          * 下面的flags属性的效果形同“锁定”。 悬浮窗不可触摸，不接受任何事件,同时不影响后面的事件响应。
 		 * wmParams.flags=LayoutParams.FLAG_NOT_TOUCH_MODAL |
@@ -110,6 +112,7 @@ public class WatcherService extends Service {
                         // 更新悬浮窗位置
                         wm.updateViewLayout(view, params);
                         break;
+                    case MotionEvent.ACTION_OUTSIDE:
                     case MotionEvent.ACTION_CANCEL:
                     case MotionEvent.ACTION_UP:
                         SharedPreferencesHelper.putString(SharedPreferencesHelper.KEY_POSITION, params.x + "x" + params.y);
